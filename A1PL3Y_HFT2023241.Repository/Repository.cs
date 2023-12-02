@@ -26,10 +26,7 @@ namespace A1PL3Y_HFT2023241.Repository
             ctx.SaveChanges();
         }
 
-        public T Read(int id)
-        {
-            throw new NotImplementedException();
-        }
+        public abstract T Read(int id);
 
         public IQueryable<T> ReadAll()
         {
