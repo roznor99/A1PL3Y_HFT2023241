@@ -30,7 +30,7 @@ namespace A1PL3Y_HFT2023241.Repository
 
         public IQueryable<T> ReadAll()
         {
-            throw new NotImplementedException();
+            return ctx.Set<T>();
         }
 
         public abstract void Update(T item);
