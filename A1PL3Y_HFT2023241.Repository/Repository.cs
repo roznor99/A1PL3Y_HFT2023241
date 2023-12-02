@@ -22,7 +22,8 @@ namespace A1PL3Y_HFT2023241.Repository
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            ctx.Set<T>().Remove(Read(id));
+            ctx.SaveChanges();
         }
 
         public T Read(int id)
