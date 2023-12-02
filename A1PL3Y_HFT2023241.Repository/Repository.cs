@@ -33,9 +33,6 @@ namespace A1PL3Y_HFT2023241.Repository
             throw new NotImplementedException();
         }
 
-        public void Update(T item)
-        {
-            throw new NotImplementedException();
-        }
+        public abstract void Update(T item);
     }
 }
