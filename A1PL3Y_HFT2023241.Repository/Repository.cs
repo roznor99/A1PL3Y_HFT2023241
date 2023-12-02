@@ -8,7 +8,12 @@ namespace A1PL3Y_HFT2023241.Repository
 {
     public abstract class Repository<T> : IRepository<T> where T : class
     {
-        
+        protected ProjectDbContext ctx;
+
+        public Repository(ProjectDbContext Ctx)
+        {
+            this.ctx = Ctx;
+        }
         public void Create(T item)
         {
             throw new NotImplementedException();
