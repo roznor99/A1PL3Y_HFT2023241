@@ -16,7 +16,8 @@ namespace A1PL3Y_HFT2023241.Repository
         }
         public void Create(T item)
         {
-            throw new NotImplementedException();
+            ctx.Set<T>().Add(item);
+            ctx.SaveChanges();
         }
 
         public void Delete(int id)
