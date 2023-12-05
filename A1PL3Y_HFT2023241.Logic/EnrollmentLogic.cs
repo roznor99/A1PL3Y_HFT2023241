@@ -76,10 +76,16 @@ namespace A1PL3Y_HFT2023241.Logic
         }
 
 
-
+        // 03 - Egy tárgy hányszor van van benne az adatbázisban
         public IEnumerable<SubjectInfo> SubjectCount()
         {
-            throw new NotImplementedException();
+            return from x in this.repo.ReadAll()
+                   group x by x.Course.Title into g
+                   select new SubjectInfo()
+                   {
+                       SubjectName = g.Key,
+                       SubjectCount = g.Count()
+                   };
         }
         
 
