@@ -107,5 +107,33 @@ namespace A1PL3Y_HFT2023241.Models
                 return "In the database, " + this.SubjectCount + " student completed the '" + this.SubjectName + "' subject!";
             }
         }
+        public class YearInfo
+        {
+            public int YearID { get; set; }
+            public double? GradeAVG { get; set; }
+            public override bool Equals(object obj)
+            {
+                YearInfo b = obj as YearInfo;
+                if (b == null)
+                {
+                    return false;
+                }
+                else
+                {
+                    return this.YearID == b.YearID &&
+                           this.GradeAVG == b.GradeAVG;
+                }
+
+            }
+
+            public override int GetHashCode()
+            {
+                return HashCode.Combine(this.YearID, this.GradeAVG);
+            }
+            public override string ToString()
+            {
+                return "Avarage of students who started in " + this.YearID + ": " + this.GradeAVG;
+            }
+        }
     }
 }
