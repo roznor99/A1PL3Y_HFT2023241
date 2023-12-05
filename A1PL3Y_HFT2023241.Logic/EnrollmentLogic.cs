@@ -49,7 +49,7 @@ namespace A1PL3Y_HFT2023241.Logic
         {
             this.repo.Delete(id);
         }
-        // 01 - Az összes diákot kiírja átlaguk szerint csökkenő sorrendben
+        // 01 - Students ordered by avggrade
         public IEnumerable<StudentsInfo> GoodStudentToBadStudent()
         {
             var a = from x in this.repo.ReadAll()
@@ -63,7 +63,7 @@ namespace A1PL3Y_HFT2023241.Logic
             return a;
         }
 
-        // 02 - Tárgyakatat milyen átlaggal végezték el eddig összesen
+        // 02 - Passe subject passed with this avg grade
         public IEnumerable<TitleInfo> SubjectPassAVG()
         {
             return from x in this.repo.ReadAll()
@@ -76,7 +76,7 @@ namespace A1PL3Y_HFT2023241.Logic
         }
 
 
-        // 03 - Egy tárgy hányszor van van benne az adatbázisban
+        // 03 - A subjects counted by name
         public IEnumerable<SubjectInfo> SubjectCount()
         {
             return from x in this.repo.ReadAll()
@@ -90,7 +90,7 @@ namespace A1PL3Y_HFT2023241.Logic
 
 
 
-        // 04 - Az adott évfolyamok felsorolva és azok  átlaga
+        // 04 - avarages by year
         public IEnumerable<YearInfo> YearAVGs()
         {
             return from x in this.repo.ReadAll()

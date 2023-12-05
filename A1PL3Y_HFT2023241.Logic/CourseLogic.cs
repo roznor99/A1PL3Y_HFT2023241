@@ -47,9 +47,8 @@ namespace A1PL3Y_HFT2023241.Logic
         {
             this.repo.Delete(id);
         }
-        // 05 - Hány tárgy van az adott értékkel ellátott kreditszám alapján
-        //      Pl: 0 kreditű tárgyból 1db van az adatbázisban
-        //          viszont 6-os kerditű tárgyból szintén 1db
+        // 05 - Hw many subjects with a specific credit
+        
         public IEnumerable<HowManyInfo> CreditValuePerSubjects()
         {
             return from x in this.repo.ReadAll()
