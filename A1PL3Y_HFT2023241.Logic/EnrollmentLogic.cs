@@ -49,10 +49,18 @@ namespace A1PL3Y_HFT2023241.Logic
         {
             this.repo.Delete(id);
         }
-
+        // 01 - Az összes diákot kiírja átlaguk szerint csökkenő sorrendben
         public IEnumerable<EnrollmentModel.StudentsInfo> GoodStudentToBadStudent()
         {
-            throw new NotImplementedException();
+            var a = from x in this.repo.ReadAll()
+                    group x by x.Student.FirstName into g
+                    orderby g.Average(t => t.Grade) descending
+                    select new StudentsInfo()
+                    {
+                        FirstName = g.Key,
+                        GradeAvg = g.Average(t => t.Grade)
+                    };
+            return a;
         }
 
        
