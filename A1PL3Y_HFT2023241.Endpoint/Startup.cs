@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Diagnostics;
 
 namespace A1PL3Y_HFT2023241.Endpoint
 {
@@ -51,16 +52,27 @@ namespace A1PL3Y_HFT2023241.Endpoint
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "A1PL3Y_HFT2023241.Endpoint1 v1"));
             }
+
+            app.UseExceptionHandler(c => c.Run(async context =>
+            {
+                var expection = context.Features
+                     .Get<IExceptionHandlerFeature>()
+                     .Error;
+                var response = new { Msg = expection.Message };
+                await context.Response.WriteAsJsonAsync(response);
+            }));
+
 
             app.UseRouting();
 
+            app.UseAuthorization();
+
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGet("/", async context =>
-                {
-                    await context.Response.WriteAsync("Hello World!");
-                });
+                endpoints.MapControllers();
             });
         }
     }
