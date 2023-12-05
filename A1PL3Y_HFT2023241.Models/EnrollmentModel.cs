@@ -49,5 +49,34 @@ namespace A1PL3Y_HFT2023241.Models
                 return this.FirstName + "'s avarage is: " + this.GradeAvg;
             }
         }
+        public class TitleInfo
+        {
+            public string TitleName { get; set; }
+            public double? AvgGrades { get; set; }
+
+            public override bool Equals(object obj)
+            {
+                TitleInfo b = obj as TitleInfo;
+                if (b == null)
+                {
+                    return false;
+                }
+                else
+                {
+                    return this.TitleName == b.TitleName &&
+                           this.AvgGrades == b.AvgGrades;
+                }
+
+            }
+
+            public override int GetHashCode()
+            {
+                return HashCode.Combine(this.TitleName, this.AvgGrades);
+            }
+            public override string ToString()
+            {
+                return "In the '" + this.TitleName + "' subject, students graduate with the following average: " + this.AvgGrades;
+            }
+        }
     }
 }
