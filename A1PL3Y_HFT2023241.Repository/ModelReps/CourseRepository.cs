@@ -15,7 +15,7 @@ namespace A1PL3Y_HFT2023241.Repository.ModelReps
 
         public override CourseModel Read(int id)
         {
-            throw new NotImplementedException();
+            return ctx.CourseModels.FirstOrDefault(t => t.CourseID == id);
         }
 
         public override void Update(CourseModel item)
