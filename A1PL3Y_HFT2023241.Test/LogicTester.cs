@@ -6,6 +6,7 @@ using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using static A1PL3Y_HFT2023241.Models.EnrollmentModel;
 
 namespace A1PL3Y_HFT2023241.Test
 {
@@ -133,6 +134,17 @@ namespace A1PL3Y_HFT2023241.Test
             }
            
             mockCourRepo.Verify(r => r.Create(newCourse), Times.Never());
+        }
+        [Test]
+        public void GoodStudentToBadStudentTest()
+        {
+            var actual = enrollmentLogic.GoodStudentToBadStudent();
+            var expected = new List<StudentsInfo>()
+            {
+                new StudentsInfo(){FirstName = "Frederic", GradeAvg = 3},
+                new StudentsInfo(){FirstName = "Alex", GradeAvg = 2}
+            };
+            Assert.AreEqual(expected, actual);
         }
 
     }
