@@ -158,6 +158,17 @@ namespace A1PL3Y_HFT2023241.Test
             };
             Assert.AreEqual(expected, actual);
         }
-
+        [Test]
+        public void SubjectCountTest()
+        {
+            var actual = enrollmentLogic.SubjectCount();
+            var expected = new List<SubjectInfo>()
+            {
+                new SubjectInfo(){SubjectName = "Környezet tudatosság", SubjectCount = 2},
+                new SubjectInfo(){SubjectName = "Jazz kultúr történet", SubjectCount = 1},
+                new SubjectInfo(){SubjectName = "Robotika", SubjectCount = 1}
+            };
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
