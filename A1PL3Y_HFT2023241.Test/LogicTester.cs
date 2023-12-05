@@ -82,5 +82,15 @@ namespace A1PL3Y_HFT2023241.Test
             mockEnrollRepo.Verify(r => r.Create(newEnrollment), Times.Once());
 
         }
+        [Test]
+        public void CreateStudentWithCorrectName()
+        {
+            var newStudent = new StudentModel() { LastName = "Woods", FirstName = "Hank", Year = 2022 };
+            
+            studentLogic.Create(newStudent);         
+
+            mockStudRepo.Verify(r => r.Create(newStudent), Times.Once());
+
+        }
     }
 }
