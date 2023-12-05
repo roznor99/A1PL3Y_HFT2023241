@@ -78,5 +78,34 @@ namespace A1PL3Y_HFT2023241.Models
                 return "In the '" + this.TitleName + "' subject, students graduate with the following average: " + this.AvgGrades;
             }
         }
+        public class SubjectInfo
+        {
+            public string SubjectName { get; set; }
+            public int SubjectCount { get; set; }
+
+            public override bool Equals(object obj)
+            {
+                SubjectInfo b = obj as SubjectInfo;
+                if (b == null)
+                {
+                    return false;
+                }
+                else
+                {
+                    return this.SubjectName == b.SubjectName &&
+                           this.SubjectCount == b.SubjectCount;
+                }
+
+            }
+
+            public override int GetHashCode()
+            {
+                return HashCode.Combine(this.SubjectName, this.SubjectCount);
+            }
+            public override string ToString()
+            {
+                return "In the database, " + this.SubjectCount + " student completed the '" + this.SubjectName + "' subject!";
+            }
+        }
     }
 }
