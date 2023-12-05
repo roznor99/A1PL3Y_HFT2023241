@@ -12,5 +12,12 @@ namespace A1PL3Y_HFT2023241.Repository.ModelReps
         public StudentRepository(ProjectDbContext Ctx) : base(Ctx)
         {
         }
+
+        public override StudentModel Read(int id)
+        {
+            return ctx.StudentModels.FirstOrDefault(t => t.ID == id);
+        }
+
+       
     }
 }
