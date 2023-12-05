@@ -5,34 +5,61 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static A1PL3Y_HFT2023241.Models.CourseModel;
 
 namespace A1PL3Y_HFT2023241.Logic
 {
     public class CourseLogic : ICourseLogic
     {
+        A1PL3Y_HFT2023241.Repository.IRepository<CourseModel> repo;
+
+        public CourseLogic(Repository.IRepository<CourseModel> repo)
+        {
+            this.repo = repo;
+        }
+
         public void Create(CourseModel item)
         {
-            throw new NotImplementedException();
+            if (item.Title.Length < 3)
+            {
+                throw new ArgumentException("Title too short!");
+            }
+            this.repo.Create(item);
         }
-
-        public void Delete(int id)
-        {
-            throw new NotImplementedException();
-        }
-
         public CourseModel Read(int id)
         {
-            throw new NotImplementedException();
+            var cour = this.repo.Read(id);
+            if (cour == null)
+            {
+                throw new ArgumentException("Course not exists");
+            }
+            return cour;
         }
-
         public IQueryable<CourseModel> ReadAll()
         {
-            throw new NotImplementedException();
+            return this.repo.ReadAll();
         }
-
         public void Update(CourseModel item)
         {
-            throw new NotImplementedException();
+            this.repo.Update(item);
+        }
+        public void Delete(int id)
+        {
+            this.repo.Delete(id);
+        }
+        // 05 - Hány tárgy van az adott értékkel ellátott kreditszám alapján
+        //      Pl: 0 kreditű tárgyból 1db van az adatbázisban
+        //          viszont 6-os kerditű tárgyból szintén 1db
+        public IEnumerable<HowManyInfo> CreditValuePerSubjects()
+        {
+            return from x in this.repo.ReadAll()
+                   group x by x.Credits into g
+                   orderby g.Count() ascending
+                   select new HowManyInfo()
+                   {
+                       CreditValue = g.Key,
+                       SubjectQuantity = g.Count()
+                   };
         }
     }
 }
