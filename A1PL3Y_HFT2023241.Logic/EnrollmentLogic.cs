@@ -50,7 +50,7 @@ namespace A1PL3Y_HFT2023241.Logic
             this.repo.Delete(id);
         }
         // 01 - Az összes diákot kiírja átlaguk szerint csökkenő sorrendben
-        public IEnumerable<EnrollmentModel.StudentsInfo> GoodStudentToBadStudent()
+        public IEnumerable<StudentsInfo> GoodStudentToBadStudent()
         {
             var a = from x in this.repo.ReadAll()
                     group x by x.Student.FirstName into g
@@ -63,23 +63,29 @@ namespace A1PL3Y_HFT2023241.Logic
             return a;
         }
 
-       
+        // 02 - Tárgyakatat milyen átlaggal végezték el eddig összesen
+        public IEnumerable<TitleInfo> SubjectPassAVG()
+        {
+            return from x in this.repo.ReadAll()
+                   group x by x.Course.Title into g
+                   select new TitleInfo()
+                   {
+                       TitleName = g.Key,
+                       AvgGrades = g.Average(t => t.Grade)
+                   };
+        }
 
-      
 
-        public IEnumerable<EnrollmentModel.SubjectInfo> SubjectCount()
+
+        public IEnumerable<SubjectInfo> SubjectCount()
         {
             throw new NotImplementedException();
         }
-
-        public IEnumerable<EnrollmentModel.TitleInfo> SubjectPassAVG()
-        {
-            throw new NotImplementedException();
-        }
+        
 
         
 
-        public IEnumerable<EnrollmentModel.YearInfo> YearAVGs()
+        public IEnumerable<YearInfo> YearAVGs()
         {
             throw new NotImplementedException();
         }
