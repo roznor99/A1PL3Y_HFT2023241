@@ -9,6 +9,10 @@ namespace A1PL3Y_HFT2023241.Repository.ModelReps
 {
     public class CourseRepository : Repository<CourseModel>, IRepository<CourseModel>
     {
+        public CourseRepository(ProjectDbContext Ctx) : base(Ctx)
+        {
+        }
+
         public override CourseModel Read(int id)
         {
             throw new NotImplementedException();
