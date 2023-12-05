@@ -25,5 +25,33 @@ namespace A1PL3Y_HFT2023241.Models
         {
             Enrollments = new HashSet<EnrollmentModel>();
         }
+        public class HowManyInfo
+        {
+            public int CreditValue { get; set; }
+            public double? SubjectQuantity { get; set; }
+            public override bool Equals(object obj)
+            {
+                HowManyInfo b = obj as HowManyInfo;
+                if (b == null)
+                {
+                    return false;
+                }
+                else
+                {
+                    return this.CreditValue == b.CreditValue &&
+                           this.SubjectQuantity == b.SubjectQuantity;
+                }
+
+            }
+
+            public override int GetHashCode()
+            {
+                return HashCode.Combine(this.CreditValue, this.SubjectQuantity);
+            }
+            public override string ToString()
+            {
+                return "There is " + this.SubjectQuantity + " subject with " + this.CreditValue + " credit!";
+            }
+        }
     }
 }
