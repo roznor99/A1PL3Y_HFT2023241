@@ -146,6 +146,18 @@ namespace A1PL3Y_HFT2023241.Test
             };
             Assert.AreEqual(expected, actual);
         }
+        [Test]
+        public void SubjectPassAVGTest()
+        {
+            var actual = enrollmentLogic.SubjectPassAVG();
+            var expected = new List<TitleInfo>()
+            {
+                new TitleInfo(){TitleName = "Környezet tudatosság", AvgGrades = 1.5},
+                new TitleInfo(){TitleName = "Jazz kultúr történet", AvgGrades = 3},
+                new TitleInfo(){TitleName = "Robotika", AvgGrades = 5}
+            };
+            Assert.AreEqual(expected, actual);
+        }
 
     }
 }
