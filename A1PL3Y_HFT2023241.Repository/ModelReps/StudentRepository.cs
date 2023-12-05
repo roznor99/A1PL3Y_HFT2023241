@@ -18,6 +18,17 @@ namespace A1PL3Y_HFT2023241.Repository.ModelReps
             return ctx.StudentModels.FirstOrDefault(t => t.ID == id);
         }
 
-       
+        public override void Update(StudentModel item)
+        {
+            var old = Read(item.ID);
+            foreach (var prop in old.GetType().GetProperties())
+            {
+                if (prop.GetAccessors().FirstOrDefault(t => t.IsVirtual) == null)
+                {
+                    prop.SetValue(old, prop.GetValue(item));
+                }
+            }
+            ctx.SaveChanges();
+        }
     }
 }
