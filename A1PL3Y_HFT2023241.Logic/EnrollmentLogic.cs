@@ -87,13 +87,19 @@ namespace A1PL3Y_HFT2023241.Logic
                        SubjectCount = g.Count()
                    };
         }
-        
 
-        
 
+
+        // 04 - Az adott évfolyamok felsorolva és azok  átlaga
         public IEnumerable<YearInfo> YearAVGs()
         {
-            throw new NotImplementedException();
+            return from x in this.repo.ReadAll()
+                   group x by x.Student.Year into g
+                   select new YearInfo()
+                   {
+                       YearID = g.Key,
+                       GradeAVG = g.Average(t => t.Grade)
+                   };
         }
     }
 }
