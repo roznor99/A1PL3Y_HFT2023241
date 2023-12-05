@@ -170,5 +170,17 @@ namespace A1PL3Y_HFT2023241.Test
             };
             Assert.AreEqual(expected, actual);
         }
+
+        [Test]
+        public void YearAVGsTest()
+        {
+            var actual = enrollmentLogic.YearAVGs();
+            var expected = new List<YearInfo>()
+            {
+                new YearInfo(){YearID = 2019, GradeAVG = 2},
+                new YearInfo(){YearID = 2020, GradeAVG = 3},
+            };
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
