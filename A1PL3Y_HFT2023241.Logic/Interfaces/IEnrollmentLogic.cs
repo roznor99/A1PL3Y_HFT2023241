@@ -14,5 +14,9 @@ namespace A1PL3Y_HFT2023241.Logic.Interfaces
         IQueryable<EnrollmentModel> ReadAll();       
         void Update(EnrollmentModel item);       
         void Delete(int id);
+        IEnumerable<EnrollmentModel.StudentsInfo> GoodStudentToBadStudent();
+        IEnumerable<EnrollmentModel.SubjectInfo> SubjectCount();
+        IEnumerable<EnrollmentModel.TitleInfo> SubjectPassAVG();
+        IEnumerable<EnrollmentModel.YearInfo> YearAVGs();
     }
 }
