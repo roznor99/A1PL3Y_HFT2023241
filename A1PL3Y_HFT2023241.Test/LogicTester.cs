@@ -119,5 +119,21 @@ namespace A1PL3Y_HFT2023241.Test
 
             mockCourRepo.Verify(r => r.Create(newCourse), Times.Once());
         }
+        [Test]
+        public void CreateCourseWithInCorrectTitle()
+        {
+            var newCourse = new CourseModel() { Title = "A", Credits = 4 };
+            try
+            {
+                courseLogic.Create(newCourse);
+            }
+            catch
+            {
+
+            }
+           
+            mockCourRepo.Verify(r => r.Create(newCourse), Times.Never());
+        }
+
     }
 }
