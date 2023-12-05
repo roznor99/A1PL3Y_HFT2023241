@@ -72,5 +72,15 @@ namespace A1PL3Y_HFT2023241.Test
             }.AsQueryable());
             courseLogic = new CourseLogic(mockCourRepo.Object);
         }
+        [Test]
+        public void CreateEnrollmentWithCorrectGrade()
+        {
+            var newEnrollment = new EnrollmentModel() { CourseID = 2, StudentID = 1, Grade = 5 };
+            //ACT
+            enrollmentLogic.Create(newEnrollment);
+            //ASSERT
+            mockEnrollRepo.Verify(r => r.Create(newEnrollment), Times.Once());
+
+        }
     }
 }
