@@ -13,6 +13,10 @@
   <ItemGroup>
     <ProjectReference Include="..\A1PL3Y_HFT2023241.Models\A1PL3Y_HFT2023241.Models.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ModelReps\" />
+  </ItemGroup>
 	
 
 </Project>
