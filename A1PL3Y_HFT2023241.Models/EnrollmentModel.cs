@@ -20,5 +20,34 @@ namespace A1PL3Y_HFT2023241.Models
         public virtual CourseModel Course { get; set; }
         [NotMapped]
         public virtual StudentModel Student { get; set; }
+        public class StudentsInfo
+        {
+            public string FirstName { get; set; }
+            public double? GradeAvg { get; set; }
+
+            public override bool Equals(object obj)
+            {
+                StudentsInfo b = obj as StudentsInfo;
+                if (b == null)
+                {
+                    return false;
+                }
+                else
+                {
+                    return this.FirstName == b.FirstName &&
+                           this.GradeAvg == b.GradeAvg;
+                }
+
+            }
+
+            public override int GetHashCode()
+            {
+                return HashCode.Combine(this.FirstName, this.GradeAvg);
+            }
+            public override string ToString()
+            {
+                return this.FirstName + "'s avarage is: " + this.GradeAvg;
+            }
+        }
     }
 }
