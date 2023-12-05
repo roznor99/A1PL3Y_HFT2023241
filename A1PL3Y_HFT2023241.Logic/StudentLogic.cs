@@ -10,29 +10,41 @@ namespace A1PL3Y_HFT2023241.Logic
 {
     public class StudentLogic : IStudentLogic
     {
+        A1PL3Y_HFT2023241.Repository.IRepository<StudentModel> repo;
+
+        public StudentLogic(Repository.IRepository<StudentModel> repo)
+        {
+            this.repo = repo;
+        }
+
         public void Create(StudentModel item)
         {
-            throw new NotImplementedException();
+            if (item.FirstName.Length < 3 || item.LastName.Length < 3)
+            {
+                throw new ArgumentException("Unreal name!");
+            }
+            this.repo.Create(item);
         }
-
-        public void Delete(int id)
-        {
-            throw new NotImplementedException();
-        }
-
         public StudentModel Read(int id)
         {
-            throw new NotImplementedException();
+            var cour = this.repo.Read(id);
+            if (cour == null)
+            {
+                throw new ArgumentException("Student not exists!");
+            }
+            return cour;
         }
-
         public IQueryable<StudentModel> ReadAll()
         {
-            throw new NotImplementedException();
+            return this.repo.ReadAll();
         }
-
         public void Update(StudentModel item)
         {
-            throw new NotImplementedException();
+            this.repo.Update(item);
+        }
+        public void Delete(int id)
+        {
+            this.repo.Delete(id);
         }
     }
 }
