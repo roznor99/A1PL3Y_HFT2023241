@@ -9,6 +9,10 @@ namespace A1PL3Y_HFT2023241.Repository.ModelReps
 {
     public class EnrollmentRepository : Repository<EnrollmentModel>, IRepository<EnrollmentModel>
     {
+        public EnrollmentRepository(ProjectDbContext Ctx) : base(Ctx)
+        {
+        }
+
         public override EnrollmentModel Read(int id)
         {
             return ctx.EnrollmentModels.FirstOrDefault(t => t.EnrollmentID == id);
