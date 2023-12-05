@@ -6,6 +6,7 @@ using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using static A1PL3Y_HFT2023241.Models.CourseModel;
 using static A1PL3Y_HFT2023241.Models.EnrollmentModel;
 
 namespace A1PL3Y_HFT2023241.Test
@@ -179,6 +180,18 @@ namespace A1PL3Y_HFT2023241.Test
             {
                 new YearInfo(){YearID = 2019, GradeAVG = 2},
                 new YearInfo(){YearID = 2020, GradeAVG = 3},
+            };
+            Assert.AreEqual(expected, actual);
+        }
+        [Test]
+        public void CreditValuePerSubjectsTest()
+        {
+            var actual = courseLogic.CreditValuePerSubjects();
+            var expected = new List<HowManyInfo>()
+            {
+                new HowManyInfo(){ SubjectQuantity = 1, CreditValue = 1},
+                new HowManyInfo(){ SubjectQuantity = 1, CreditValue = 3},
+                new HowManyInfo(){ SubjectQuantity = 1, CreditValue = 5},
             };
             Assert.AreEqual(expected, actual);
         }
