@@ -14,5 +14,6 @@ namespace A1PL3Y_HFT2023241.Logic.Interfaces
         IQueryable<CourseModel> ReadAll();
         void Update(CourseModel item);        
         void Delete(int id);
+        IEnumerable<CourseModel.HowManyInfo> CreditValuePerSubjects();
     }
 }
